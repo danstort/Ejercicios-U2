@@ -17,4 +17,7 @@ window.onload = function(){
 
     let nodoHTML1ba = document.childNodes[0].childNodes[2].childNodes[1];
     console.log(nodoHTML1ba);
+
+    let nodoHTML1bb = document.childNodes[0].childNodes[2].childNodes[3];
+    console.log(nodoHTML1bb);
 }
