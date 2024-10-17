@@ -1,9 +1,9 @@
 window.onload = function(){
 
+let enlaces = document.getElementsByTagName('a');
+console.log (enlaces.length);
 
-console.log (document.getElementsByTagName('a').length);
-
-console.log(document.getElementsByTagName('a').item[5]);
+console.log(enlaces[enlaces.length-1])
 
 
 }
