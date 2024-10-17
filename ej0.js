@@ -1,5 +1,6 @@
 window.onload = function(){
 
+   /* 
     let nodoHTML = document.childNodes[0];
     console.log(nodoHTML);
 
@@ -20,4 +21,17 @@ window.onload = function(){
 
     let nodoHTML1bb = document.childNodes[0].childNodes[2].childNodes[3];
     console.log(nodoHTML1bb);
+
+    console.log();
+    */
+
+    
+    let nodoHTML = document.body;
+    console.log(nodoHTML);
+
+    let firstPFromBody = document.body.getElementsByTagName('p')[15 ];
+    console.log(firstPFromBody)
+
+    
+    
 }
