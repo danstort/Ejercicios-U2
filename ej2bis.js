@@ -30,7 +30,8 @@
 	function generaAnimacion() {
 		ctx.clearRect(0, 0, 600, 400); // Limpia el canvas
 
-		
+		let todosLlegan = true; // Variable para verificar si todos han llegado al final
+
 
 		for (let i = 0; i < lista.length; i++) {
 
@@ -46,9 +47,12 @@
 				
 			} else {
 				rect.y += 1 + Math.random()*3.5; // Incremento de y
+				todosLlegan = false;
 			}
 
-			
+			if (todosLlegan) {
+				clearInterval(id);
+			}
 		}
 
 		
@@ -61,3 +65,6 @@
 
 //La función colorAleatorio la tengo que meter en el constructor, si la llamo directamente desde generarAnimación, todos los cuadros cambian de color constantemente.
 
+//La variable todosLlegan se inicializa como true en cada llamada a generaAnimacion. 
+//Si algún rectángulo no ha alcanzado la posición y >= 375, todosLlegan se cambia a false.
+//Al final de cada llamada de generaAnimacion, si todosLlegaron sigue siendo true, significa que todos los rectángulos han llegado, y clearInterval(id) detiene la animación.
