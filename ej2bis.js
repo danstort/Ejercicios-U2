@@ -10,10 +10,10 @@
 			this.x = Math.random() * 575; // Coordenada x aleatoria
 			this.y = 0; // Coordenada y inicial en la parte superior del canvas
 			this.primero = false;
-			this.color=this.generarColorAleatorio();
+			this.color = this.generarColorAleatorio();
 		}
 
-		 generarColorAleatorio() {
+		generarColorAleatorio() {
 			const r = Math.floor(Math.random() * 256);
 			const g = Math.floor(Math.random() * 256);
 			const b = Math.floor(Math.random() * 256);
@@ -35,7 +35,7 @@
 
 		for (let i = 0; i < lista.length; i++) {
 
-			
+
 			let rect = lista[i]; //Necesito meter el array en una variable para acceder a x e y.
 
 			ctx.fillStyle = rect.color;
@@ -44,27 +44,38 @@
 			// Actualiza la posición del rectángulo
 			if (rect.y >= 375) {
 				rect.primero = true;
-				
+				//console.log(rect.y)
+				lista.splice(i, 1);
+
 			} else {
-				rect.y += 1 + Math.random()*3.5; // Incremento de y
+				y_max = 1 + Math.random() * 3.5;
+
+				if (rect.y + y_max < 375) {
+					rect.y += y_max; // Incremento de y
+				} else {
+
+					rect.y = 375;
+				}
 				todosLlegan = false;
 			}
 
-			if (todosLlegan) {
-				clearInterval(id);
-			}
+
+		} if (todosLlegan) {
+			clearInterval(id);
+			console.log("ha llegado")
+			ctx.clearRect(0, 0, 600, 400); //Al llegar todo, limpio para que no me deje el último cuadrado
 		}
 
-		
+
 	}
 
 	generarLista(); // Genera la lista de rectángulos
 	let id = setInterval(generaAnimacion, 1000 / 30); // Inicia la animación
-	
+
 };
 
 //La función colorAleatorio la tengo que meter en el constructor, si la llamo directamente desde generarAnimación, todos los cuadros cambian de color constantemente.
 
-//La variable todosLlegan se inicializa como true en cada llamada a generaAnimacion. 
+//La variable todosLlegan se inicializa como true en cada llamada a generaAnimacion.
 //Si algún rectángulo no ha alcanzado la posición y >= 375, todosLlegan se cambia a false.
 //Al final de cada llamada de generaAnimacion, si todosLlegaron sigue siendo true, significa que todos los rectángulos han llegado, y clearInterval(id) detiene la animación.
