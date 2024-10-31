@@ -3,7 +3,8 @@
 	let lista = [];
 	let canvas = document.getElementById('miCanvas');
 	let ctx = canvas.getContext('2d');
-	let arrayLength = 10; // Define el tamaño de la lista de rectángulos
+	let arrayLength = Math.round(15*Math.random()); // Define el tamaño de la lista de rectángulos. Genérara un número ramdon entre 1 y 15.
+	console.log("Se han generado "+arrayLength+" cuadrados.")
 
 	class Rectangulo {
 		constructor() {
@@ -48,7 +49,7 @@
 				lista.splice(i, 1);
 
 			} else {
-				y_max = 1 + Math.random() * 3.5;
+				y_max = 1 + Math.random() * 3;
 
 				if (rect.y + y_max < 375) {
 					rect.y += y_max; // Incremento de y
@@ -62,7 +63,7 @@
 
 		} if (todosLlegan) {
 			clearInterval(id);
-			console.log("ha llegado")
+			console.log("Han llegado todos")
 			ctx.clearRect(0, 0, 600, 400); //Al llegar todo, limpio para que no me deje el último cuadrado
 		}
 
